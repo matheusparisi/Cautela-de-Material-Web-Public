@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8" />
+<html lang="pt-BR">
+
+<img class="splash" src="../imgs/background.png">
+
+<head>
+
+	<title>Cautela de Material WEB - CPOR</title>
+
+	<!--FIREBASE-->
+	<script src="../js/firebase-app-compat.js"></script>
+	<script src="../js/firebase-auth-compat.js"></script>
+	<script src="../js/firebase-database-compat.js"></script>
+	<script src="../js/firebase.js"></script>
+
+	<!--JQUERY-->
+	<script src="../js/jquery.js"></script>
+
+	<!--FONTAWESOME-->
+	<link rel="stylesheet" href="../css/all.min.css" />
+
+	<!--INSTASCAN-->
+	<script src="../js/instascan.js"></script>
+
+	<!--HTML2PDF-->
+	<script src="../js/html2pdf.js"></script>
+
+	<!--STYLE-->
+	<link rel="stylesheet" href="../css/global.css" />
+	<link rel="stylesheet" href="../css/main.css" />
+
+	<!--SCRIPT-->
+	<script src="../js/main.js"></script>
+	<script src="../js/auth-guard.js"></script>
+
+</head>
+
+<body>
+
+	<!--PARTICLES.JS-->
+	<div id="particle"></div>
+	<script src="../js/particles.js"></script>
+
+	<!--BODY-->
+	<div id="overlay">
+
+		<div class="menu">
+
+			<div class="menu_cima">
+				<i class="fa fa-home fa-lg fa-fw botao_cima" aria-hidden="true"></i>
+				<button class="botao_cima" type="button"
+					onclick="desativaScan(); paginaInicio(); zerarInputs()">Início</button>
+			</div>
+
+			<div class="menu_cima">
+				<i class="fa fa-file fa-lg fa-fw botao_cima" aria-hidden="true"></i>
+				<button class="botao_cima" type="button" onclick="paginaRelatorio()">Relatório</button>
+			</div>
+
+			<div class="menu_cima">
+				<i class="fa fa-qrcode fa-lg fa-fw botao_cima" aria-hidden="true"></i>
+				<button class="botao_cima" type="button"
+					onclick="desativaScan(); paginaQRCODE(); zerarInputs()">QrCode</button>
+			</div>
+
+			<div class="menu_cima">
+				<i class="fa fa-id-card fa-lg fa-fw botao_cima" aria-hidden="true"></i>
+				<button class="botao_cima" type="button" onclick="desativaScan(); paginaID(); zerarInputs()">ID</button>
+			</div>
+
+			<div class="menu_cima">
+				<i class="fa fa-unlock fa-lg fa-fw botao_cima" aria-hidden="true"></i>
+				<button class="botao_cima" type="button" onclick="deslogar()">Deslogar</button>
+			</div>
+
+		</div>
+
+		<span draggable="false" class="sem_clique menu_atual" id="menu_atual">Menu Principal</span>
+		<h2 draggable="false" class="sem_clique" id="logado_como">Logado como:</h2>
+		<h4 draggable="false" class="sem_clique" id="frase">"Na paz, assim como na guerra, teu lema é sempre
+			servir."<br>-
+			Canção da Arma de Comunicações</h4>
+
+		<div>
+
+			<div class="wrapper">
+
+				<div id="botaoCautelar" class="box a menu_botao">
+
+					<img draggable="false" id="img" src="../imgs/cautelar.png" class="img-responsive"
+						onclick="desativaScan(); mostrarCautelar(); zerarInputs()">
+
+				</div>
+
+				<div id="botaoAdicionar" class="box b menu_botao">
+
+					<img draggable="false" id="img" src="../imgs/adicionar.png" class="img-responsive"
+						onclick="desativaScan(); mostrarAdicionar(); zerarInputs()">
+
+				</div>
+				<div id="botaoCautelados" class="box c menu_botao">
+
+					<img draggable="false" id="img" src="../imgs/cautelados.png" class="img-responsive"
+						onclick="desativaScan(); mostrarCautelados(); alterarOrdemMaterialCautelados(); zerarInputs()">
+
+				</div>
+
+				<div id="botaoInventario" class="box d menu_botao">
+
+					<img draggable="false" id="img" src="../imgs/inventario.png" class="img-responsive"
+						onclick="desativaScan(); mostrarInventario(); alterarOrdemMaterial(); zerarInputs()">
+
+				</div>
+
+				<div class="box2 e" id="inventario">
+
+					<div>
+						<input onkeyup="buscarInventario()" id="buscar_input_inventario" class="buscar_input_inventario"
+							type="text" name="buscar" placeholder="Material" />
+						<span id="buscar_icone_inventario" class="fa fa-qrcode fa-lg fa-fw icone_buscar"
+							aria-hidden="true"></span>
+						<span id="buscar_icone_inventario_2" class="fa fa-calendar-days fa-lg fa-fw icone_buscar"
+							aria-hidden="true"></span>
+						<button onclick="desativaScan(); escanear('buscar_input_inventario', 'inventario')"
+							id="buscar_button_inventario" class="buscar_button_inventario"><span
+								class="fa fa-camera"></span></button>
+						<button onclick="alterarOrdemMaterial()" id="buscar_button_inventario_material"
+							class="buscar_button_inventario_material"><span class="fa fa-tag"></span></button>
+						<button onclick="alterarOrdemUltimo()" id="buscar_button_inventario_ultimo"
+							class="buscar_button_inventario_ultimo"><span class="fa fa-user"></span></button>
+						<button onclick="alterarOrdemData()" id="buscar_button_inventario_data"
+							class="buscar_button_inventario_data"><span class="fa fa-calendar-days"></span></button>
+					</div>
+					<ol id="items"></ol>
+
+				</div>
+
+				<div class="box2 e" id="cautelado">
+
+					<div>
+						<input onkeyup="buscarCautelados()" id="buscar_input_cautelados" class="buscar_input_cautelados"
+							type="text" name="buscar" placeholder="Material" />
+						<span id="buscar_icone_cautelados" class="fa fa-qrcode fa-lg fa-fw icone_buscar"
+							aria-hidden="true"></span>
+						<span id="buscar_icone_cautelados_2" class="fa fa-calendar-days fa-lg fa-fw icone_buscar"
+							aria-hidden="true"></span>
+						<span id="buscar_icone_cautelados_3" class="fa fa-map-marker fa-lg fa-fw icone_buscar"
+							aria-hidden="true"></span>
+						<button onclick="desativaScan(); escanear('buscar_input_cautelados', 'cautelados')"
+							id="buscar_button_cautelados" class="buscar_button_cautelados"><span
+								class="fa fa-camera"></span></button>
+						<button onclick="alterarOrdemMaterialCautelados()" id="buscar_button_cautelados_material"
+							class="buscar_button_cautelados_material"><span class="fa fa-tag"></span></button>
+						<button onclick="alterarOrdemUltimoCautelados()" id="buscar_button_cautelados_militar"
+							class="buscar_button_cautelados_militar"><span class="fa fa-user"></span></button>
+						<button onclick="alterarOrdemDataCautelados()" id="buscar_button_cautelados_data"
+							class="buscar_button_cautelados_data"><span class="fa fa-calendar-days"></span></button>
+						<button onclick="alterarOrdemDestinoCautelados()" id="buscar_button_cautelados_destino"
+							class="buscar_button_cautelados_destino"><span class="fa fa-map-marker"></span></button>
+					</div>
+
+					<ol id="cautelados"></ol>
+
+				</div>
+
+				<div class="box2 e" id="adicionar">
+
+					<div id="adicionar_menu" class="centralizado">
+
+						<a id="texto_editando" class="texto_editando">Editando:</a>
+
+						<div class="material_div" id="material_div">
+							<input id="material_input_adicionar" class="material_input_adicionar" type="text"
+								name="material" placeholder="Material" />
+							<span class="fa fa-qrcode fa-lg fa-fw icone" aria-hidden="true"></span>
+							<button onclick="desativaScan(); escanear('material_input_adicionar')"
+								id="material_button_adicionar" class="material_button_adicionar"><span
+									class="fa fa-camera"></span></button>
+						</div>
+
+						<div class="quantia_div" id="quantia_div">
+							<input id="quantia_input_adicionar" class="quantia_input_adicionar" min="1" oninput="this.value = 
+							!!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null" type="number" name="quantia"
+								placeholder="Quantia"></input>
+							<span class="fa fa-arrows-v fa-lg fa-fw icone" aria-hidden="true"></span>
+							<button onclick="quantiaMenosAdicionar()" id="quantia_menos_button_adicionar"
+								class="quantia_menos_button_adicionar"><span class="fa fa-minus"></span></button>
+							<button onclick="quantiaMaisAdicionar()" id="quantia_mais_button_adicionar"
+								class="quantia_mais_button_adicionar"><span class="fa fa-plus"></span></button>
+						</div>
+
+						<div class="info_div" id="info_div">
+							<input id="info_input_adicionar" class="info_input_adicionar" type="text" name="info"
+								placeholder="Informações" />
+							<span class="fa fa-message fa-lg fa-fw icone" aria-hidden="true"></span>
+							<button onclick="preencherInfoAdicionar()" id="info_button_adicionar"
+								class="info_button_adicionar"><span class="fa fa-file-text"></span></button>
+						</div>
+
+					</div>
+
+					<div class="adicionar_div" id="adicionar_div">
+						<button onclick="desativaScan(); adicionarAoInventario()" id="adicionar_input"
+							class="adicionar_button">ADICIONAR</button>
+					</div>
+
+					<div class="editar_div" id="editar_div">
+						<button onclick="desativaScan(); editarInventario('adicionar')" id="editar_input"
+							class="editar_button">EDITAR</button>
+					</div>
+
+				</div>
+
+				<div class="box2 e" id="cautelar">
+
+					<div id="cautelar_menu" class="centralizado">
+
+						<div class="militar_div" id="militar_div">
+							<input id="militar_input_cautelar" class="militar_input_cautelar" type="text" name="militar"
+								placeholder="Militar" />
+							<span class="fa fa-qrcode fa-lg fa-fw icone" aria-hidden="true"></span>
+							<button onclick="desativaScan(); escanear('militar_input_cautelar');"
+								id="militar_button_cautelar" class="militar_button_cautelar"><span
+									class="fa fa-camera"></span></button>
+							<br>
+						</div>
+
+						<div class="material_div" id="material_div">
+							<input id="material_input_cautelar" class="material_input_cautelar" type="text"
+								name="material" placeholder="Material" />
+							<span class="fa fa-qrcode fa-lg fa-fw icone" aria-hidden="true"></span>
+							<button onclick="desativaScan(); escanear('material_input_cautelar')"
+								id="material_button_cautelar" class="material_button_cautelar"><span
+									class="fa fa-camera"></span></button>
+							<br>
+						</div>
+
+						<div class="quantia_div" id="quantia_div">
+							<input id="quantia_input_cautelar" class="quantia_input_cautelar" min="1" oninput="this.value = 
+							!!this.value && Math.abs(this.value) >= 1 ? Math.abs(this.value) : null" type="number" name="quantia"
+								placeholder="Quantia" />
+							<span class="fa fa-arrows-v fa-lg fa-fw icone" aria-hidden="true"></span>
+							<button onclick="quantiaMenosCautelar()" id="quantia_menos_button_cautelar"
+								class="quantia_menos_button_cautelar"><span class="fa fa-minus"></span></button>
+							<button onclick="quantiaMaisCautelar()" id="quantia_mais_button_cautelar"
+								class="quantia_mais_button_cautelar"><span class="fa fa-plus"></span></button>
+						</div>
+
+						<div class="info_div" id="info_div">
+							<input id="info_input_cautelar" class="info_input_cautelar" type="text" name="info"
+								placeholder="Informações" />
+							<span class="fa fa-message fa-lg fa-fw icone" aria-hidden="true"></span>
+							<button onclick="preencherInfoCautelar()" id="info_button_cautelar"
+								class="info_button_cautelar"><span class="fa fa-file-text"></span></button>
+						</div>
+
+						<div class="destino_div" id="destino_div">
+							<div class="dropdown">
+								<span class="fa fa-map-marker fa-lg fa-fw icone_destino" aria-hidden="true"></span>
+								<button onclick="mostrarDropdown()" id="destino_button_cautelar"
+									class="destino_button_cautelar">Sem destino</button>
+								<div id="myDropdown" class="dropdown-content">
+									<a onclick="destinoInput('Sem destino')">Sem destino</a>
+									<a onclick="destinoInput('Serviço')">Serviço</a>
+									<a onclick="destinoInput('Treinamento')">Treinamento</a>
+									<a onclick="destinoInput('Formatura')">Formatura</a>
+									<a onclick="destinoInput('Campo')">Campo</a>
+								</div>
+								<div id="myDropdown2" class="dropdown-content2">
+									<a onclick="destinoInput('PCI')">PCI</a>
+									<a onclick="destinoInput('Manutenção')">Manutenção</a>
+									<a onclick="destinoInput('Missão externa')">Missão externa</a>
+									<a onclick="destinoInput('Outros')">Outros</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="cautelar_div" id="cautelar_div">
+						<button onclick="desativaScan(); cautelarMaterial()" id="cautelar_input"
+							class="cautelar_button">CAUTELAR</button>
+					</div>
+
+
+				</div>
+
+			</div>
+
+			<div id="gerar-qrcode" class="wrapperqrcode">
+
+				<div class="boxqrcode a2 excluirImprimir">
+
+					<div class="qrcode_div" id="qrcode_div">
+
+						<div class="qrquantia">
+							<a class="textoqrcode">QrCode / Página</a>
+							<br>
+							<button id="quantia_input_qrcode" class="quantia_input_qrcode">0</button>
+							<span class="fa fa-arrows-v fa-lg fa-fw icone_quantia_qrcode" aria-hidden="true"></span>
+							<button onclick="quantiaMenosQrcode(); quebrarPagina()" id="quantia_menos_button_qrcode"
+								class="quantia_menos_button_qrcode"><span class="fa fa-minus"></span></button>
+							<button onclick="quantiaMaisQrcode(); quebrarPagina()" id="quantia_mais_button_qrcode"
+								class="quantia_mais_button_qrcode"><span class="fa fa-plus"></span></button>
+						</div>
+
+						<div class="qrtamanho">
+							<a class="textoqrcode">Tamanho / Qrcode</a>
+							<br>
+							<button id="quantia_input_tamanho" class="quantia_input_tamanho">P</button>
+							<span class="fa fa-arrows-v fa-lg fa-fw icone_quantia_qrcode" aria-hidden="true"></span>
+							<button onclick="quantiaMenosTamanho()" id="quantia_menos_button_tamanho"
+								class="quantia_menos_button_tamanho"><span class="fa fa-minus"></span></button>
+							<button onclick="quantiaMaisTamanho()" id="quantia_mais_button_tamanho"
+								class="quantia_mais_button_tamanho"><span class="fa fa-plus"></span></button>
+						</div>
+
+						<div class="qrimprimir">
+							<a class="textoqrcode"> </a>
+							<br>
+							<button onclick="printDocuments()" id="quantia_input_imprimir"
+								class="quantia_input_imprimir">Imprimir</button>
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+				<div id="b2" class="boxqrcode b2 centroqrcode">
+
+				</div>
+
+
+				<div id="c2" class="boxqrcode c2 centroqrcode">
+
+				</div>
+
+
+				<div id="d2" class="boxqrcode d2 centroqrcode">
+
+				</div>
+
+			</div>
+
+			<div id="gerar-id" class="wrapperid">
+
+				<div class="boxid x2 excluirImprimir">
+
+					<div class="qrcode_div" id="qrcode_div">
+
+						<div class="idquantia">
+							<a class="textoid">ID / Página</a>
+							<br>
+							<button id="quantia_input_id" class="quantia_input_id">0</button>
+							<span class="fa fa-arrows-v fa-lg fa-fw icone_quantia_id" aria-hidden="true"></span>
+							<button onclick="quantiaMenosID()" id="quantia_menos_button_id"
+								class="quantia_menos_button_id"><span class="fa fa-minus"></span></button>
+							<button onclick="quantiaMaisID()" id="quantia_mais_button_id"
+								class="quantia_mais_button_id"><span class="fa fa-plus"></span></button>
+						</div>
+
+						<div class="idimprimir">
+							<a class="textoid"> </a>
+							<br>
+							<button onclick="printDocumentsID()" id="quantia_input_imprimir"
+								class="quantia_input_imprimir">Imprimir</button>
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+				<div id="z2" class="boxid z2 centroid2">
+
+				</div>
+
+			</div>
+
+			<div id="gerar-relatorio" class="wrapper_relatorio">
+
+				<div class="box_relatorio m2 excluirImprimir">
+
+					<div class="qrcode_div" id="qrcode_div">
+
+						<div class="relatorio_data">
+							<a class="textoid">Data / Relatório</a>
+							<br>
+							<input type="date" class="data_input_relatorio" id="data_input_relatorio" min="2022-10-10">
+							<!--button id="quantia_input_id" class="quantia_input_id">0</button-->
+							<!--span class="fa fa-arrows-v fa-lg fa-fw icone_quantia_id" aria-hidden="true"></span-->
+							<!--button onclick="quantiaMenosID()" id="quantia_menos_button_id"
+								class="quantia_menos_button_id"><span class="fa fa-minus"></span></button-->
+							<!--button onclick="quantiaMaisID()" id="quantia_mais_button_id"
+								class="quantia_mais_button_id"><span class="fa fa-plus"></span></button-->
+						</div>
+
+						<div class="relatorio_imprimir">
+							<a class="texto_relatorio"> </a>
+							<br>
+							<button onclick="alert('Clicou')" id="gerar_relatorio"
+								class="quantia_input_imprimir">Gerar</button>
+						</div>
+
+						<div class="relatorio_imprimir">
+							<a class="texto_relatorio"> </a>
+							<br>
+							<button onclick="alert('Clicou')" id="imprimir_relatorio"
+								class="quantia_input_imprimir">Imprimir</button>
+						</div>
+
+						<div class="relatorio_imprimir">
+							<a class="texto_relatorio"> </a>
+							<br>
+							<button onclick="alert('Clicou')" id="planilha_relatorio"
+								class="quantia_input_imprimir">Planilha</button>
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+				<div id="n2" class="box_relatorio n2 centroid3">
+
+				</div>
+
+			</div>
+
+			<div class="fimdapagina excluirImprimir"></div>
+
+		</div>
+
+		<div id="esconder_menu" class="fab absolute">
+			<i onclick="esconderMenu()" class="fa fa-arrow-left centro2" aria-hidden="true"></i>
+		</div>
+
+		<div id="mostrar_menu" class="fab absolute2">
+			<i onclick="mostrarMenu()" class="fa fa-arrow-right centro2" aria-hidden="true"></i>
+		</div>
+
+		<div id="preview_camera" class="hide">
+
+			<div class="boxcamera"></div>
+			<video id="preview"></video>
+
+			<div class="btn-group btn-group-toggle mb-5 camerabotao" data-toggle="buttons">
+				<label class="btn btn-primary active">
+					<input id="radio1" type="radio" name="options" value="1" autocomplete="off" checked> Camera 1
+				</label>
+				<label class="btn btn-secondary">
+					<input id="radio2" type="radio" name="options" value="2" autocomplete="off"> Camera 2
+				</label>
+			</div>
+
+		</div>
+
+		<div class="footer">
+
+			<h4>Made with ❤️ by Matheus Parisi</h4>
+
+		</div>
+
+	</div>
+
+
+</body>
+
+<script src="../js/splash-main.js"></script>
+<script src="../js/resolution-main.js"></script>
+<script src="../js/cam-qrcode.js"></script>
+
+</html>

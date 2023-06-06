@@ -1,0 +1,961 @@
+.menu_atual {
+  background-color: rgba(61, 103, 141, 0.6);
+  border: 2px solid white;
+  padding: 0 20px;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 5px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(200, 200, 200);
+  /* Firefox */
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(200, 200, 200);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(200, 200, 200);
+}
+
+.sem_clique {
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+.img-responsive {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  margin-top: -90px;
+  /* Half the height */
+  margin-left: -90px;
+  /* Half the width */
+}
+
+.centro2 {
+  font-size: 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -18px;
+  /* Half the height */
+  margin-left: -16px;
+  /* Half the width */
+}
+
+.centro2:hover {
+  cursor: pointer;
+  font-size: 40px;
+  margin-top: -20px;
+  /* Half the height */
+  margin-left: -18px;
+  /* Half the width */
+}
+
+.img-responsive:hover {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  /* Half the height */
+  margin-left: -100px;
+  /* Half the width */
+}
+
+button {
+  cursor: pointer;
+}
+
+.botao_cima {
+  background-color: transparent;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border: none;
+  font-weight: bold;
+}
+
+.menu {
+  padding-bottom: 50px;
+}
+
+.menu_cima {
+  height: 30px;
+  width: 110px;
+  background: white;
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-left: 0px;
+  float: left;
+  text-align: center;
+}
+
+ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+ol li {
+  border-radius: 5px;
+  background: rgb(61, 103, 141);
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  border: 5px solid white;
+  font-size: 18px;
+}
+
+ol li:hover {
+  opacity: 0.9;
+}
+
+li p {
+  margin: 4px 0px;
+}
+
+.botao_excluir_inventario,
+.botao_excluir_cautelados {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+  border: none;
+}
+
+.icone_excluir_inventario,
+.icone_excluir_cautelados {
+  position: absolute;
+  top: 5px;
+  margin: 0;
+  padding: 0;
+  right: 7px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+.botao_editar_inventario {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 65px;
+  right: 20px;
+  background-color: rgb(59, 88, 166);
+  cursor: pointer;
+  border: none;
+}
+
+.icone_editar_inventario {
+  position: absolute;
+  top: 5px;
+  margin: 0;
+  padding: 0;
+  right: 4px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+
+.botao_cautelar_inventario {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+  background-color: rgb(104, 105, 107);
+  cursor: pointer;
+  border: none;
+}
+
+.botao_descautelar_cautelados {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 135px;
+  right: 20px;
+  background-color: rgb(104, 105, 107);
+  cursor: pointer;
+  border: none;
+}
+
+.icone_cautelar_inventario {
+  position: absolute;
+  top: 4px;
+  margin: 0;
+  padding: 0;
+  right: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+}
+
+.icone_descautelar_inventario {
+  position: absolute;
+  top: 4px;
+  margin: 0;
+  padding: 0;
+  right: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+}
+
+.listainventario {
+  position: relative;
+}
+
+.fab {
+  width: 54px;
+  height: 54px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 2px 2px 2px grey;
+  background-color: rgb(0, 0, 0);
+}
+
+.absolute {
+  position: absolute;
+  top: 485px;
+  left: 480px;
+}
+
+.absolute2 {
+  position: absolute;
+  top: 485px;
+  left: 25px;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 200px 200px auto;
+}
+
+.box {
+  border-radius: 15px;
+  position: relative;
+  text-align: left;
+  border: 1px solid black;
+  height: 250px;
+  width: 200px;
+  background-color: rgb(255, 255, 255);
+}
+
+.box2 {
+  margin-left: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  height: 524px;
+  width: auto;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.centralizado {
+  padding-top: 20px;
+  height: 410px;
+  margin: 0;
+}
+
+.a {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.b {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.c {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.d {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.e {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.militar_div,
+.material_div,
+.quantia_div,
+.qrcode_div,
+.tamanhoqrcode_div,
+.info_div,
+.destino_div {
+  margin-left: -50px;
+  margin-right: -50px;
+  position: relative;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qrquantia,
+.qrtamanho,
+.idquantia,
+.relatorio_data {
+  margin-right: 50px;
+}
+
+.destino_div {
+  padding-right: 60px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(41, 42, 45);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-left: 6px;
+}
+
+.dropdown-content a {
+  color: rgb(255, 255, 255);
+  padding: 4px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(63, 64, 66);
+  cursor: pointer;
+}
+
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  background-color: rgb(41, 42, 45);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-left: 166px;
+}
+
+.dropdown-content2 a {
+  color: rgb(255, 255, 255);
+  padding: 4px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content2 a:hover {
+  background-color: rgb(63, 64, 66);
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+  opacity: 1;
+}
+
+.hide {
+  display: block;
+  opacity: 0.0;
+}
+
+.icone {
+  padding-right: 420px;
+  position: absolute;
+  color: #ffffff;
+}
+
+.icone_destino {
+  padding-top: 28px;
+  padding-left: 13px;
+  position: absolute;
+  display: flex;
+  color: #ffffff;
+}
+
+.adicionar_div,
+.editar_div,
+.cautelar_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.adicionar_button,
+.editar_button,
+.cautelar_button {
+  width: 235px;
+  height: 55px;
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+}
+
+.militar_button_cautelar,
+.material_button_cautelar,
+.material_button_adicionar,
+.info_button_cautelar,
+.info_button_adicionar {
+  width: 56px;
+  height: 40px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.quantia_mais_button_qrcode,
+.quantia_menos_button_qrcode,
+.quantia_mais_button_id,
+.quantia_menos_button_id,
+.quantia_mais_button_tamanho,
+.quantia_menos_button_tamanho,
+.quantia_mais_button_adicionar,
+.quantia_menos_button_adicionar,
+.quantia_mais_button_cautelar,
+.quantia_menos_button_cautelar {
+  width: 26px;
+  height: 40px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.militar_input_cautelar,
+.material_input_cautelar,
+.material_input_adicionar,
+.quantia_input_cautelar,
+.quantia_input_adicionar,
+.info_input_cautelar,
+.info_input_adicionar {
+  width: 400px;
+  padding: 10px;
+  margin: 4px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font: small-caption;
+  font-size: 18px;
+  border: 2px inset #EBE9ED;
+}
+
+.buscar_input_inventario,
+.buscar_input_cautelados {
+  width: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font: small-caption;
+  font-size: 18px;
+  border: 2px inset #EBE9ED;
+  position: absolute;
+  top: 125px;
+  margin-left: 275px;
+  left: 25%;
+  right: 25%;
+}
+
+.texto_editando {
+  color: rgb(255, 255, 255);
+  font: small-caption;
+  font-size: 25px;
+  margin-left: -50px;
+  margin-right: -50px;
+  position: relative;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buscar_button_inventario,
+.buscar_button_cautelados {
+  width: 56px;
+  height: 40px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+  position: absolute;
+  top: 125px;
+  margin-left: 685px;
+  left: 25%;
+  right: 25%;
+  border-radius: 3px;
+}
+
+.buscar_button_inventario_material,
+.buscar_button_cautelados_material {
+  width: 40px;
+  height: 35px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+  position: absolute;
+  top: 180px;
+  margin-left: 285px;
+  left: 25%;
+  right: 25%;
+  border-radius: 3px;
+}
+
+.buscar_button_inventario_ultimo,
+.buscar_button_cautelados_militar {
+  width: 40px;
+  height: 35px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+  position: absolute;
+  top: 180px;
+  margin-left: 335px;
+  left: 25%;
+  right: 25%;
+  opacity: 0.7;
+  border-radius: 3px;
+}
+
+.buscar_button_inventario_data,
+.buscar_button_cautelados_data {
+  width: 40px;
+  height: 35px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+  position: absolute;
+  top: 180px;
+  margin-left: 385px;
+  left: 25%;
+  right: 25%;
+  opacity: 0.7;
+  border-radius: 3px;
+}
+
+.buscar_button_cautelados_destino {
+  width: 40px;
+  height: 35px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: rgb(33, 92, 170);
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  font-weight: bold;
+  position: absolute;
+  top: 180px;
+  margin-left: 435px;
+  left: 25%;
+  right: 25%;
+  opacity: 0.7;
+  border-radius: 3px;
+}
+
+.icone_buscar {
+  top: 149px;
+  padding-left: 10px;
+  position: absolute;
+  color: #ffffff;
+  margin-left: 275px;
+  left: 25%;
+  right: 25%;
+}
+
+
+.destino_button_cautelar {
+  width: 400px;
+  padding: 10px;
+  margin: 4px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font: small-caption;
+  font-size: 18px;
+  border: 2px inset #EBE9ED;
+  text-align: left;
+}
+
+i {
+  margin-top: 8px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: 0 0 0px 1000px rgb(104, 147, 138) inset;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(104, 147, 138) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.fimdapagina {
+  width: auto;
+  height: 125px;
+}
+
+.textoqrcode,
+.textoid,
+.texto_relatorio {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.icone_qrcode {
+  display: flex;
+  padding-top: 24px;
+  padding-left: 12px;
+  position: absolute;
+  color: #ffffff;
+}
+
+.icone_id {
+  display: flex;
+  padding-top: 23px;
+  padding-left: 13px;
+  position: absolute;
+  color: #ffffff;
+}
+
+.icone_quantia_qrcode,
+.icone_quantia_id {
+  display: absolute;
+  padding-top: 22px;
+  margin-left: -60px;
+  position: absolute;
+  color: #ffffff;
+}
+
+.quantia_input_qrcode,
+.quantia_input_id,
+.quantia_input_tamanho {
+  position: relative;
+  padding-left: 20px;
+  width: 60px;
+  height: 40px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  border: 2px inset #EBE9ED;
+}
+
+.quantia_input_relatorio,
+.data_input_relatorio {
+  position: relative;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 130px;
+  height: 40px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  border: 2px inset #EBE9ED;
+}
+
+.quantia_input_imprimir {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100px;
+  height: 40px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  border: 2px inset #EBE9ED;
+  margin-right: 20px;
+}
+
+.quantia_input_id:hover,
+.quantia_input_qrcode:hover,
+.quantia_input_tamanho:hover {
+  cursor: default;
+}
+
+
+.qrcode_input {
+  display: flex;
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+  margin: 4px;
+  box-sizing: border-box;
+  padding-left: 35px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font: small-caption;
+  font-size: 14px;
+  border: 2px inset #EBE9ED;
+  margin-bottom: 5px;
+}
+
+.barcode {
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.barcodeID {
+  margin-left: 388px;
+  margin-top: 0px;
+  position: absolute;
+}
+
+.barcodeFinal {
+  margin-left: 15px;
+  margin-bottom: 50px;
+}
+
+.wrapperqrcode {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 33% 33% 33%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.wrapperid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.wrapper_relatorio {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.m2 {
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+.n2 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.boxqrcode,
+.boxid,
+.box_relatorio {
+  border-radius: 5px;
+}
+
+.a2 {
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+.b2 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.c2 {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.d2 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.centroqrcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centroid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.centroid2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.centroid3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carteirinha_extra {
+  padding-bottom: 98px;
+}
+
+.espaco20 {
+  margin-bottom: 25px;
+}
+
+
+.x2 {
+  grid-column: 1 / 4;
+  grid-row: 1;
+}
+
+.z2 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.id_input {
+  width: 250px;
+  height: 40px;
+  margin: 4px;
+  box-sizing: border-box;
+  padding-left: 35px;
+  background-color: rgb(39, 109, 171);
+  color: rgb(255, 255, 255);
+  font: small-caption;
+  font-size: 14px;
+  border: 2px inset #EBE9ED;
+}
+
+.id_texto1 {
+  margin-right: 275px;
+  margin-top: -8px;
+  position: absolute;
+  font-size: 14px;
+  color: blue;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+  font-weight: bold;
+}
+
+.id_texto2 {
+  margin-right: 350px;
+  margin-top: 70px;
+  position: absolute;
+  font-size: 14px;
+  color: blue;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+  font-weight: bold;
+}
+
+.id_texto3 {
+  margin-right: 120px;
+  margin-top: 70px;
+  position: absolute;
+  font-size: 14px;
+  color: blue;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+  font-weight: bold;
+}
+
+.id_texto4 {
+  margin-right: 350px;
+  margin-top: 147px;
+  position: absolute;
+  font-size: 14px;
+  color: blue;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+  font-weight: bold;
+}
+
+.id_texto5 {
+  margin-right: 120px;
+  margin-top: 147px;
+  position: absolute;
+  font-size: 14px;
+  color: blue;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+  font-weight: bold;
+}

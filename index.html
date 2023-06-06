@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8" />
+<html lang="pt-BR">
+
+<img class="splash" src="./imgs/background.png" />
+<img id="splash2" class="splash2" src="./imgs/logo_cpor.png" />
+
+<head>
+
+    <title>Cautela de Material WEB - CPOR</title>
+
+    <!--FIREBASE-->
+    <script src="./js/firebase-app-compat.js"></script>
+    <script src="./js/firebase-auth-compat.js"></script>
+    <script src="./js/firebase-database-compat.js"></script>
+    <script src="./js/firebase.js"></script>
+
+    <!--JQUERY-->
+    <script src="./js/jquery.js"></script>
+
+    <!--FONTAWESOME-->
+    <link rel="stylesheet" href="./css/all.min.css" />
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <!--SCRIPT-->
+    <script src="./js/index.js"></script>
+    <script src="./js/validations.js"></script>
+
+</head>
+
+<body>
+
+    <!--PARTICLES.JS-->
+    <div id="particle"></div>
+    <script src="./js/particles.js"></script>
+
+    <!--BODY-->
+    <div id="overlay">
+
+        <div class="centralizado">
+
+            <form>
+
+                <div>
+                    <img class="main_logo" src="./imgs/logo_cpor.png" />
+                </div>
+
+                <div>
+                    <h1 class="main_titulo">Cautela de<br>Material WEB</h1>
+                </div>
+
+                <div class="main_email_div">
+                    <span class="fa fa-user fa-lg fa-fw icone" aria-hidden="true"></span>
+                    <input id="email" class="main_email_input" type="email" name="email" placeholder="E-mail"
+                        onkeyup="validarInputs()" />
+                </div>
+
+                <br class="sem_clique">
+
+                <div class="main_password_div">
+                    <span class="fa fa-lock fa-lg fa-fw icone" aria-hidden="true"></span>
+                    <input id="senha" class="main_password_input" type="password" name="password" placeholder="Senha"
+                        onkeyup="validarInputs()" />
+                </div>
+
+                <br class="sem_clique">
+
+                <div class="cb_mostrar_senha">
+                    <input onchange="mostrarSenha()" type="checkbox" id="checkbox" />
+                    <label class="checkbox" for="checkbox">  Mostrar senha</label>
+                </div>
+
+                <br class="sem_clique">
+                <div>
+                    <img class="icone_carregando sem_clique" id="icone_carregando" src="./imgs/loading.gif" />
+                </div>
+
+                <div class="main_login_div">
+                    <button onclick="fazerLogin()" id="login" class="main_login_button" type="button"
+                        disabled="true">LOGIN</button>
+                </div>
+
+                <div>
+                    <button onclick="recuperarSenha()" id="esqueci_senha" class="esqueci_senha" type="button"
+                        disabled="true">Esqueci a senha</button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="footer">
+
+            <h4>Made with ❤️ by Matheus Parisi</h4>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<script src="./js/splash-index.js"></script>
+<script src="./js/resolution-index.js"></script>
+
+</html>

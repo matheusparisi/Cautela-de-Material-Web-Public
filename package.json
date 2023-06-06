@@ -1,0 +1,10 @@
+{
+  "author": {
+    "name": "Matheus Fontes Parisi",
+    "email": "matheusfontesparisi@hotmail.com",
+    "url": "https://www.linkedin.com/in/matheusparisi/"
+  },
+  "dependencies": {
+    "firebase": "^9.9.4"
+  }
+}
